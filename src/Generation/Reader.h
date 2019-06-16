@@ -12,10 +12,10 @@ public:
 
 class ReadDTO {
 private:
-    bool sequences[L]; //последовательности
-    int lengths[L]; //длины последовательностей
+    bool *sequences[L]; //последовательности
+    int *lengths[L]; //длины последовательностей
     //доп.данные
-    bool massive_type;
+    bool *massive_type;
     int *csm;
     int *swp;
     int *rpt;

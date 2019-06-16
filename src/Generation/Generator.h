@@ -6,7 +6,14 @@
 #define H_J_GENERATOR_H
 
 #include "Reader.h"
+#include "Sequences.h"
+
+#include <string>
 #include <string.h>
+
+using namespace std;
+
+class ResultData;
 
 class Generator {
 public:
@@ -22,7 +29,7 @@ private:
 
 class Writer {
 public:
-    void write(std::string namefile, ResultData &); //запись последовательностей в файл
+    void write(string namefile, ResultData &); //запись последовательностей в файл
 };
 
 #endif //H_J_GENERATOR_H
