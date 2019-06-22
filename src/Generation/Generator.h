@@ -5,11 +5,12 @@
 #ifndef H_J_GENERATOR_H
 #define H_J_GENERATOR_H
 
-#include "Reader.h"
-#include "Sequences.h"
+#include "GuiSuequenceFeatureReader.h"
+#include "InterfaceSequences.h"
 
 #include <string>
 #include <string.h>
+#include <vector>
 
 using namespace std;
 
@@ -23,13 +24,28 @@ public:
 class ResultData {
 private:
     bool massive_type;
-    int **sequences[L]; //последовательности
+    int **sequences; //последовательности
     int lengths[L]; //длины последовательностей
+public:
+    void set_massive_type(bool);
+
+    void set_sequences(int **sqcs);
+
+    void set_lengths(int *lens);
+
+    bool get_massive_type();//0-up 1-down
+
+    int **get_sequences();
+
+    int *get_lengths();
+
+    void print();
+
 };
 
 class Writer {
 public:
-    void write(string namefile, ResultData &); //запись последовательностей в файл
+    void write(ResultData &); //запись каждой последовательности в отдельный файл
 };
 
 #endif //H_J_GENERATOR_H

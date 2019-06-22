@@ -2,7 +2,7 @@
 // Created by pda on 16.06.19.
 //
 
-#include "AbsractSort.h"
+#include "Sort.h"
 
 int swp = 0; //кол-во свапов
 int eql = 0; //кол-во сравнений
@@ -182,7 +182,7 @@ Resultdata *Jsort::sorting(int *mass, unsigned int N) {
     for (int i = N - 1; i >= 0; i--)
         reheap(mass, N, i);
 
-    //Строим невозрастающую кучу
+    //Строим невозрастающую кучу   
     //Меньшие элементы из конца массива
     //закидываем поближе к началу
     for (int i = N - 1; i >= 0; i--)

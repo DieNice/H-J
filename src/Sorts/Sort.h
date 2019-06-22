@@ -2,8 +2,8 @@
 // Created by pda on 16.06.19.
 //
 
-#ifndef H_J_ABSRACTSORT_H
-#define H_J_ABSRACTSORT_H
+#ifndef H_J_SORT_H
+#define H_J_SORT_H
 
 #include <time.h>
 
@@ -26,7 +26,7 @@ public:
     double get_time();
 };
 
-class AbstractSort {
+class InterfaceSort{
 
 public:
     virtual Resultdata *sorting(int *, unsigned int) = 0;
@@ -34,7 +34,7 @@ public:
 
 };
 
-class Heapsort : public AbstractSort {
+class Heapsort : public InterfaceSort {
 protected:
     void siftDown(int *numbers, int root, int bottom);
 
@@ -43,9 +43,9 @@ public:
 
 };
 
-class Jsort : public AbstractSort {
+class Jsort : public InterfaceSort {
 public:
     Resultdata *sorting(int *, unsigned int) override;
 };
 
-#endif //H_J_ABSRACTSORT_H
+#endif //H_J_SORT_H
