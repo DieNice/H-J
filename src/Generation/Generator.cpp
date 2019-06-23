@@ -161,12 +161,13 @@ void Writer::write(ResultData &data) {
             //вывод содержимого в файл
             ofstream fout;
             fout.open(namefile);
-            fout << data.get_massive_type() << endl;
+            //fout << data.get_massive_type() << endl;
             fout << lennowsqs << " ";
 
 
             for (int j = 0; j < lennowsqs; j++) {
-                fout << data.get_sequences()[i][j] << " ";
+                if (j == lennowsqs - 1) { fout << data.get_sequences()[i][j]; }
+                else { fout << data.get_sequences()[i][j] << " "; }
             }
         }
         namefile = "";

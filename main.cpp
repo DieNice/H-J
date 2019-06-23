@@ -4,10 +4,13 @@
 #include "src/Generation/GuiSuequenceFeatureReader.h"
 
 #include "src/Sorts/Sort.h"
+#include "src/Sorts/MakerGistograms.h"
+#include "src/Sorts/ReaderSequncesFiles.h"
 
 using namespace std;
 
 int main() {
+/*
     GuiSuequenceFeatureReader reader;
     Writer writer;
     Generator generator;
@@ -26,26 +29,20 @@ int main() {
 
     generator.generate(readDto)->print();
     writer.write(*generator.generate(readDto));
+*/
 
 
-/*    InterfaceSort *heapsort = new Heapsort;
-    InterfaceSort *jsort = new Jsort;
-
-    int MAX = 10000000;
-
-    int *m = new int[MAX];
-
-    *//*for (int i = MAX; i >= 0; i--) { m[MAX - i] = i; }*//*
-    for (int i = 0; i < MAX; i++) { m[i] = rand() % MAX + 1; }
-
-    Resultdata *res = heapsort->sorting(m, MAX);
+    ChekerSequncesFiles chekerSequncesFiles;
+    ReaderSequncesFiles readerSequncesFiles;
+    MakerGistograms makerGistograms;
 
 
+    string filename = "1_Output_sequnces_10.sqc5";
 
-    //for (int i = 0; i < MAX; i++) { cout << m[i] << " "; }
+    cout << chekerSequncesFiles.check_file(filename);
+    makerGistograms.add_seq(readerSequncesFiles.readfile(filename));
 
-    cout << "swp=" << res->get_swp() << endl;
-    cout << "eql=" << res->get_eql() << endl;
-    cout << "time=" << res->get_time() << endl;
-    return 0;*/
+    makerGistograms.make_gistograms();
+
+    return 0;
 }

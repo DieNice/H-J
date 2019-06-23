@@ -10,6 +10,11 @@ public:
     ReadDTO *read();
 };
 
+class CheckerGUIdataGeneration {
+public:
+    bool checkguidata();//в параметрах элементы
+};
+
 class ReadDTO {
 private:
     bool sequences[L]; //последовательности

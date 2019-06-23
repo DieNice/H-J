@@ -88,6 +88,7 @@ void reheap(int *a, int length, int i) {
 
         //Если правый потомок в пределах массива
         if (child < length - 1) {
+            eql++;
             //То из левого и правого потомка выбираем наименьшего
             if (a[child] >= a[child + 1]) {
                 child += 1;
@@ -95,6 +96,7 @@ void reheap(int *a, int length, int i) {
         }
 
         //Родитель меньше потомков?
+        eql++;
         if (T < a[child]) {
 
             //Тогда с этим родителем и его потомками разобрались
@@ -104,7 +106,7 @@ void reheap(int *a, int length, int i) {
             //Перемещаем потомка на место родителя
             //и с родителем в цикле сравниваем уже потомков этого потомка
         } else {
-
+            swp++;
             a[parent] = a[child];
             parent = child;
             child = 2 * (parent + 1) - 1;
@@ -115,6 +117,7 @@ void reheap(int *a, int length, int i) {
     //Родитель, с которого всё начиналось
     //передвигается ближе к концу массива
     //(или остаётся на месте если не повезло)
+    swp++;
     a[parent] = T;
 
 }
@@ -138,7 +141,7 @@ void invreheap(int *a, int length, int i) {
 
         //Если левый потомок в пределах массива
         if (child < length - 1) {
-
+            eql++;
             //То из левого и правого потомка выбираем наибольшего
             if (a[length - 1 - child] <= a[length - 1 - (child + 1)]) {
                 child += 1;
@@ -147,6 +150,7 @@ void invreheap(int *a, int length, int i) {
         }
 
         //Родитель больше потомков?
+        eql++;
         if (T > a[length - 1 - child]) {
 
             //Тогда с этим родителем и его потомками разобрались
@@ -157,6 +161,7 @@ void invreheap(int *a, int length, int i) {
             //Родитель НЕ больше чем наибольший из его потомков.
             //Перемещаем потомка на место родителя
             //и с родителем в цикле сравниваем уже потомков этого потомка
+            swp++;
             a[length - 1 - parent] = a[length - 1 - child];
             parent = child;
             child = 2 * (parent + 1) - 1;
@@ -167,6 +172,7 @@ void invreheap(int *a, int length, int i) {
     //Родитель, с которого всё начиналось
     //передвигается ближе к началу массива
     //(или остаётся на месте если не повезло)
+    swp++;
     a[length - 1 - parent] = T;
 
 }
@@ -175,6 +181,8 @@ Resultdata *Jsort::sorting(int *mass, unsigned int N) {
 
     swp = 0;
     eql = 0;
+
+    clock_t start = clock();
 
 //Строим неубывающую кучу
     //Большие элементы из начала массива
@@ -193,12 +201,23 @@ Resultdata *Jsort::sorting(int *mass, unsigned int N) {
     for (int j = 1; j < N; j++) {
         int T = mass[j];
         int i = j - 1;
+        eql++;
         while (i >= 0 && mass[i] > T) {
             mass[i + 1] = mass[i];
             i -= 1;
+            eql++;
+            swp++;
         }
         mass[i + 1] = T;
     }
+    clock_t end = clock();
+
+    Resultdata *resultdata = new Resultdata;
+    resultdata->set_swp(swp);
+    resultdata->set_eql(eql);
+    resultdata->set_time((double) (end - start) / CLOCKS_PER_SEC);
+
+    return resultdata;
 
 }
 
