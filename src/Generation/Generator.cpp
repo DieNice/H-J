@@ -16,11 +16,9 @@ ResultData *Generator::generate(ReadDTO &data) {
     collectionGeneratorsSequences.push_back(new Sequences6);
     collectionGeneratorsSequences.push_back(new Sequences7);
     collectionGeneratorsSequences.push_back(new Sequences8);
-    collectionGeneratorsSequences.push_back(new Sequences9);
 
     ResultData *resultData = new ResultData;
     resultData->set_lengths(data.get_lenghts());
-    resultData->set_massive_type(data.get_massive_type());
 
     int **resultsqcs = new int *[L];
 
@@ -38,13 +36,9 @@ ResultData *Generator::generate(ReadDTO &data) {
                 case 6:
                     subdata = data.get_rpt();
                     break;
-                case 7:
-                    subdata = data.get_crv();
-                    break;
             }
 
-            resultsqcs[i] = collectionGeneratorsSequences.at(i)->get_vector(data.get_lenghts()[i], subdata,
-                                                                            data.get_massive_type());
+            resultsqcs[i] = collectionGeneratorsSequences.at(i)->get_vector(data.get_lenghts()[i], subdata);
 
         } else { resultsqcs[i] = NULL; }
     }
@@ -61,20 +55,12 @@ void ResultData::set_lengths(int *lens) {
     }
 }
 
-void ResultData::set_massive_type(bool downup) {
-    massive_type = downup;
-}
-
 void ResultData::set_sequences(int **sqcs) {
     sequences = new int *[L];
     for (int i = 0; i < L; i++) {
         sequences[i] = sqcs[i];
     }
 
-}
-
-bool ResultData::get_massive_type() {
-    return massive_type;
 }
 
 int **ResultData::get_sequences() {

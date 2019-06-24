@@ -23,17 +23,13 @@ public:
 
 class ResultData {
 private:
-    bool massive_type;
     int **sequences; //последовательности
     int lengths[L]; //длины последовательностей
 public:
-    void set_massive_type(bool);
 
     void set_sequences(int **sqcs);
 
     void set_lengths(int *lens);
-
-    bool get_massive_type();//0-up 1-down
 
     int **get_sequences();
 

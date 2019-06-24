@@ -7,10 +7,6 @@ void ReadDTO::set_sequence(bool sqs[L]) {
     }
 }
 
-void ReadDTO::set_massive_type(bool downup) {
-    massive_type = downup;
-}
-
 void ReadDTO::set_lengths(int len[L]) {
     for (int i = 0; i < L; i++) {
         lengths[i] = len[i];
@@ -25,9 +21,6 @@ void ReadDTO::set_rpt(int r) {
     rpt = r;
 }
 
-void ReadDTO::set_crv(int cr) {
-    crv = cr;
-}
 
 void ReadDTO::set_swp(int s) {
     swp = s;
@@ -45,17 +38,11 @@ int *ReadDTO::get_lenghts() {
     return result;
 }
 
-bool ReadDTO::get_massive_type() {
-    return massive_type;
-}
-
 int ReadDTO::get_rpt() {
     return rpt;
 }
 
-int ReadDTO::get_crv() {
-    return crv;
-}
+
 
 int ReadDTO::get_swp() {
     return swp;
