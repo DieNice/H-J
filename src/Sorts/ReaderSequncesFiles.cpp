@@ -4,6 +4,24 @@
 
 #include "ReaderSequncesFiles.h"
 
+//функция отделения  имени файла от пути
+string delete_path(string filePath) {
+    string resultstring = "";
+    int pos_last_slash = 0;
+    int len_str = filePath.length();
+
+    for (int i = 0; i < len_str; i++) {
+        if (filePath[i] == '/') {
+            pos_last_slash = i;
+        }
+    }
+
+    for (int i = pos_last_slash + 1; i < len_str; i++) {
+        resultstring = resultstring + filePath[i];
+    }
+    return resultstring;
+}
+
 //функция проверки существования файла
 bool FileIsExists(string filePath) {
     bool isExist = false;
@@ -16,10 +34,12 @@ bool FileIsExists(string filePath) {
     return isExist;
 }
 
-int ChekerSequncesFiles::check_file(string filename) {
+int ChekerSequncesFiles::check_file(string filepath) {
     const int MIN_LEN = 24;
     const int TEXT_LEN = 17;
     const int EXP_LEN = 4;
+
+    string filename = delete_path(filepath);
 
     int flag = 0;
     string copyfilename = filename;
@@ -73,9 +93,9 @@ int ChekerSequncesFiles::check_file(string filename) {
 
     if (type_sqc < 0 || type_sqc > 9) { return ERRORFILENAME; }
 
-    if (FileIsExists(filename)) {
+    if (FileIsExists(filepath)) {
         ifstream infile;
-        infile.open(filename);
+        infile.open(filepath);
 
         int sizefile;
         infile >> sizefile;
@@ -85,9 +105,9 @@ int ChekerSequncesFiles::check_file(string filename) {
         int count = 0;
 
         while (!infile.eof()) {
-            int simple = NULL;
+            int simple = -1;
             infile >> simple;
-            if (simple != NULL) {
+            if (simple != -1) {
                 if (simple < 0) { return NEGATIVEVALUE; }
                 count++;
             }
@@ -108,9 +128,9 @@ int ChekerSequncesFiles::check_file(string filename) {
 
 }
 
-FilesDTO *ReaderSequncesFiles::readfile(string filename) {
+FilesDTO *ReaderSequncesFiles::readfile(string filepath) {
     ifstream infile;
-    infile.open(filename);
+    infile.open(filepath);
 
     int sizefile;
 
@@ -121,9 +141,9 @@ FilesDTO *ReaderSequncesFiles::readfile(string filename) {
 
     int i = 0;
     while (!infile.eof()) {
-        int simple = NULL;
+        int simple = -1;
         infile >> simple;
-        if (simple != NULL) {
+        if (simple != -1) {
             resulvector[i] = simple;
             i++;
         }

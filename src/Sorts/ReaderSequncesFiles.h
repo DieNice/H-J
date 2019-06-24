@@ -30,7 +30,7 @@ public:
 
 class ReaderSequncesFiles {
 public:
-    FilesDTO *readfile(string filename);
+    FilesDTO *readfile(string filepath);
 };
 
 enum errors {
@@ -39,7 +39,7 @@ enum errors {
 
 class ChekerSequncesFiles {
 public:
-    int check_file(string filename);
+    int check_file(string filepath);
 };
 
 #endif //H_J_READERSEQUNCESFILES_H

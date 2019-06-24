@@ -9,8 +9,9 @@
 
 using namespace std;
 
+
 int main() {
-    GuiSuequenceFeatureReader reader;
+/*    GuiSuequenceFeatureReader reader;
     Writer writer;
     Generator generator;
 
@@ -25,20 +26,20 @@ int main() {
     readDto.set_scm(3);
 
     generator.generate(readDto)->print();
-    writer.write(*generator.generate(readDto));
+    writer.write(*generator.generate(readDto));*/
 
 
-/*    ChekerSequncesFiles chekerSequncesFiles;
+    ChekerSequncesFiles chekerSequncesFiles;
     ReaderSequncesFiles readerSequncesFiles;
     MakerGistograms makerGistograms;
 
 
-    string filename = "1_Output_sequnces_10.sqc5";
+    string filepath = "/home/pda/GUIH-J/GUIH-J/2_Output_sequnces_1000.sqc2";
 
-    cout << chekerSequncesFiles.check_file(filename);
-    makerGistograms.add_seq(readerSequncesFiles.readfile(filename));
+    cout << chekerSequncesFiles.check_file(filepath);
+    makerGistograms.add_seq(readerSequncesFiles.readfile(filepath));
 
-    makerGistograms.make_gistograms();*/
+    makerGistograms.make_gistograms();
 
     return 0;
 }

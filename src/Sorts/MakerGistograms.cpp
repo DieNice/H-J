@@ -31,7 +31,8 @@ int culc_mid_value(int *data, int size) {
 }
 
 bool MakerGistograms::make_gistograms() {
-    const int num_rpt = 10;
+    const int num_rpt = 10;//число тестовых запусков
+
     if (sequnces.empty()) { return true; }
 
     Heapsort heapsort;
