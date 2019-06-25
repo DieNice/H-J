@@ -77,13 +77,14 @@ bool MakerGistograms::make_gistograms() {
             alleqljsort[j] = nowdatasortingjsort->get_eql();
         }
         //считаем средние значения
-        ResultTimesHeapsort[i] = culc_mid_valuef((float *) alltimeheapsort, num_rpt);
-        ResultSwpsHeapsort[i] = culc_mid_value(allswpheapsort, num_rpt);
-        ResultEqlsHeapsort[i] = culc_mid_value(alleqlheapsort, num_rpt);
+        int num_middle_elems = num_rpt - 2;
+        ResultTimesHeapsort[i] = culc_mid_valuef((float *) alltimeheapsort, num_middle_elems);
+        ResultSwpsHeapsort[i] = culc_mid_value(allswpheapsort, num_middle_elems);
+        ResultEqlsHeapsort[i] = culc_mid_value(alleqlheapsort, num_middle_elems);
 
-        ResultTimesJsort[i] = culc_mid_valuef((float *) alltimejsort, num_rpt);
-        ResultSwpsJsort[i] = culc_mid_value(allswpjsort, num_rpt);
-        ResultEqlsJsort[i] = culc_mid_value(alleqljsort, num_rpt);
+        ResultTimesJsort[i] = culc_mid_valuef((float *) alltimejsort, num_middle_elems);
+        ResultSwpsJsort[i] = culc_mid_value(allswpjsort, num_middle_elems);
+        ResultEqlsJsort[i] = culc_mid_value(alleqljsort, num_middle_elems);
     }
 
     //строим гистрограммы

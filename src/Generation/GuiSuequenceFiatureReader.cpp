@@ -43,11 +43,14 @@ int ReadDTO::get_rpt() {
 }
 
 
-
 int ReadDTO::get_swp() {
     return swp;
 }
 
 int ReadDTO::get_csm() {
     return csm;
+}
+
+int CheckerGUIdataGeneration::checkguidata(bool *sqns, int *lens, int swp, int rpt, int csm) {
+    return 0;
 }

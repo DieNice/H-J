@@ -12,7 +12,7 @@ public:
 
 class CheckerGUIdataGeneration {
 public:
-    bool checkguidata();//в параметрах элементы
+    int checkguidata(bool *sqns,int *lens,int swp,int rpt,int csm);//в параметрах элементы
 };
 
 class ReadDTO {
